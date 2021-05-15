@@ -27,7 +27,7 @@ module Devise
           return
         end
 
-        resource = mapping.to.find_by(id: data["data"]["resource"]["key"])
+        resource = mapping.to.find_by(id: data["data"]["resource"]["key"].first)
 
         if resource && Devise.passwordless_expire_old_tokens_on_sign_in
           if (last_login = resource.try(:current_sign_in_at))
